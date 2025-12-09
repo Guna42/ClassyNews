@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}About · ClassiNews{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>About <span>ClassiNews</span></h1>
+    <p class="page-subtitle">Understanding how our AI-powered news classifier works</p>
+</div>
+
+<div class="content-grid">
+    <section class="content-card">
+        <h2><i class="fas fa-bullseye"></i> What is ClassiNews?</h2>
+        <p>
+            ClassiNews is an intelligent news classification system that automatically categorizes 
+            news articles into predefined categories using advanced Natural Language Processing (NLP) 
+            and Machine Learning techniques.
+        </p>
+        <p>
+            Our system can instantly analyze headlines and full articles, determining whether they 
+            belong to categories like World News, Sports, Business, or Science & Technology.
+        </p>
+    </section>
+
+    <section class="content-card">
+        <h2><i class="fas fa-brain"></i> How It Works</h2>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Text Preprocessing</h3>
+                    <p>Input text is cleaned, lowercased, and stopwords are removed to prepare for analysis.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Feature Extraction</h3>
+                    <p>TF-IDF (Term Frequency-Inverse Document Frequency) vectorization converts text into numerical features.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Classification</h3>
+                    <p>Our trained Multinomial Naive Bayes model predicts the most likely category based on learned patterns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-card">
+        <h2><i class="fas fa-tools"></i> Technology Stack</h2>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <strong>Backend:</strong> Python, Flask
+            </div>
+            <div class="tech-item">
+                <strong>ML Framework:</strong> scikit-learn
+            </div>
+            <div class="tech-item">
+                <strong>NLP:</strong> NLTK, TF-IDF Vectorization
+            </div>
+            <div class="tech-item">
+                <strong>Model:</strong> Multinomial Naive Bayes
+            </div>
+            <div class="tech-item">
+                <strong>Frontend:</strong> HTML5, CSS3, JavaScript
+            </div>
+            <div class="tech-item">
+                <strong>Deployment:</strong> Flask Web Server
+            </div>
+        </div>
+    </section>
+
+    <section class="content-card">
+        <h2><i class="fas fa-chart-line"></i> Model Performance</h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value">94%</div>
+                <div class="metric-label">Validation Accuracy</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">&lt;200ms</div>
+                <div class="metric-label">Average Response Time</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">4</div>
+                <div class="metric-label">Supported Categories</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-card">
+        <h2><i class="fas fa-shield-alt"></i> Privacy & Security</h2>
+        <p>
+            We take your privacy seriously. All prediction data is stored locally and automatically 
+            cleared after 24 hours. No personal information is collected or shared with third parties.
+        </p>
+        <p>
+            The classification happens entirely on our servers, and we use industry-standard security 
+            practices to protect your data.
+        </p>
+    </section>
+
+    <section class="content-card">
+        <h2><i class="fas fa-rocket"></i> Future Enhancements</h2>
+        <ul class="feature-list">
+            <li>Support for additional news categories</li>
+            <li>Confidence scores and probability distributions</li>
+            <li>Batch processing for multiple articles</li>
+            <li>RESTful API for integration</li>
+            <li>Real-time news feed classification</li>
+            <li>Export functionality for results</li>
+        </ul>
+    </section>
+</div>
+{% endblock %}
+
