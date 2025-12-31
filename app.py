@@ -164,7 +164,7 @@ def api_predict():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    # Run on 0.0.0.0 for Docker, otherwise localhost
+    # Run on 0.0.0.0 for Docker and production
     host = "0.0.0.0"
-    debug = False  # Set to False in production
+    debug = False
     app.run(host=host, port=5000, debug=debug)
