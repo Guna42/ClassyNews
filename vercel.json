@@ -1,12 +1,16 @@
 {
-  "framework": "flask",
-  "docker": true,
-  "buildCommand": "pip install -r requirements.txt",
+  "builds": [
+    {
+      "src": "Dockerfile",
+      "use": "@vercel/docker"
+    }
+  ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "app.py"
+      "dest": "/"
     }
   ]
 }
+
 
