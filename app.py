@@ -32,7 +32,10 @@ model = joblib.load("news_classifier.joblib")
 # ----------------------------
 # SETUP FLASK APP
 # ----------------------------
-app = Flask(__name__)
+app = Flask(__name__, 
+            template_folder='templates', 
+            static_folder='static',
+            static_url_path='/static')
 app.secret_key = os.urandom(24)  # For session management
 
 # History storage (in production, use a database)
@@ -161,4 +164,7 @@ def api_predict():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Run on 0.0.0.0 for Docker, otherwise localhost
+    host = "0.0.0.0"
+    debug = False  # Set to False in production
+    app.run(host=host, port=5000, debug=debug)

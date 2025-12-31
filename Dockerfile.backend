@@ -1,0 +1,36 @@
+# Backend Dockerfile for Flask News Classifier
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy Flask application files
+COPY app.py .
+COPY news_classifier.joblib .
+COPY tfidf_vectorizer.joblib .
+COPY templates/ ./templates/
+COPY static/ ./static/
+
+# Create prediction history file if it doesn't exist
+RUN touch prediction_history.json
+
+# Expose port for Flask
+EXPOSE 5000
+
+# Set Flask app environment variables
+ENV FLASK_APP=app.py
+ENV FLASK_ENV=production
+
+# Run the Flask application
+CMD ["python", "app.py"]

@@ -1,0 +1,39 @@
+# Docker Compose with Separate Frontend (Optional)
+# Use this if you want to run Nginx on port 80 and Flask on port 5000
+# Run with: docker-compose -f docker-compose-with-frontend.yml up --build
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: classinews-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./prediction_history.json:/app/prediction_history.json
+      - ./templates:/app/templates
+      - ./static:/app/static
+    environment:
+      - FLASK_ENV=production
+      - FLASK_APP=app.py
+    networks:
+      - classinews-network
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: classinews-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - classinews-network
+    restart: unless-stopped
+
+networks:
+  classinews-network:
+    driver: bridge
